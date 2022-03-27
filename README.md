@@ -3,6 +3,10 @@
 ## Descripsiton
 RecursionのProject2(Vending Machine)で作成したアプリ。
 課題をアレンジして、旅先の思い出写真（建物と景観）を見ることができるVending Photo Machineにした。
+
+## Url
+https://khkmgch.github.io/Vending_Machine/
+
 ## Usage
 自動販売機に入力された番号に対応する写真が表示される。
 

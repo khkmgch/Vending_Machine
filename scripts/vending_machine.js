@@ -18,7 +18,7 @@ class HelperFunction{
         return Math.floor(Math.random() * (max - min - 1) + min);        
     }
 }
-//
+//ターゲット
 let target = document.getElementById("target");
 target.classList.add("bgcolor-dark", "d-flex", "flex-column", "align-items-center");
 
@@ -58,10 +58,12 @@ borderDiv.append(heading);
 let flexDiv = document.createElement("div");
 flexDiv.classList.add("d-flex", "flex-wrap", "justify-content-around", "p-2");
 borderDiv.append(flexDiv);
+
 //画像を表示するslider
 let slider = document.createElement("div");
 slider.id = "slider";
 slider.classList.add("col-12", "col-md-5", "d-flex", "justify-content-center", "align-items-center", "mx-2", "p-4", "p-md-0");
+
 //sliderにアニメーションで表示するmainと、消すextraを用意
 let main = document.createElement("div");
 main.classList.add("img-appear");
@@ -70,10 +72,12 @@ extra.classList.add("img-disappear");
 
 flexDiv.append(slider);
 
+//displayとcalculatorを囲うdiv
 let display_calculator = document.createElement("div");
 display_calculator.classList.add("col-12", "col-md-5", "mt-4", "mt-md-0", "mb-3");
 flexDiv.append(display_calculator);
 
+//写真の情報を表示するdisplay
 let display = document.createElement("div");
 display.classList.add("border", "border-lightgrey", "bgcolor-grey","pt-3");
 
@@ -101,6 +105,7 @@ display.innerHTML = `
 `;
 display_calculator.append(display);
 
+//番号を入力するcalculator
 let calculator = document.createElement("div");
 calculator.classList.add("col-12", "d-flex", "justify-content-center", "ps-3", "py-3", "bgcolor-grey", "border", "border-lightgrey", "mt-3");
 let buttons = document.createElement("div");
@@ -131,6 +136,7 @@ btnC.addEventListener("click",function(){
 btnE.innerHTML = "E";
 btnE.addEventListener("click", function(){
     let id = enteredId();
+    //777が入力されるとランダムのスライドショーが始まる。
     if(id == 777){
         let interval = setInterval(function(){
             let newId = HelperFunction.randomNum(0, photoList.length-1);
@@ -141,6 +147,7 @@ btnE.addEventListener("click", function(){
         body.addEventListener("keydown", function(){
             clearInterval(interval);
         });
+    //リストにない番号が入力されるとアラートが表示される。
     }else if(id >= photoList.length){
         alert(`
         Please enter a number from 0 to ${(photoList.length-1).toString()}.
@@ -156,11 +163,13 @@ calculator.append(buttons);
 
 display_calculator.append(calculator);
 
+//現在、入力されている番号を取得する関数
 function enteredId(){
     let idInput = document.getElementById("photoId");
     let id = parseInt(idInput.value);
     return id;
 }
+//idを受け取り、displayに表示される情報を更新する関数
 function displayInfo(id){
     let currPhoto = photoList[id];
 
@@ -170,6 +179,7 @@ function displayInfo(id){
     document.getElementById("yearDisplay").innerHTML = currPhoto.year;
     document.getElementById("favoriteDisplay").innerHTML = currPhoto.favoritePart;
 }
+//受け取ったidの写真をスライダーに表示する関数
 function reflectPhoto(nextId){
     let currId = main.getAttribute("data-index") === undefined ? 0 : parseInt(main.getAttribute("data-index"));
     let nextPhoto = photoList[nextId];
@@ -190,6 +200,7 @@ function reflectPhoto(nextId){
         slider.append(extra);
     }
 }
+//キーボード入力を可能にする関数
 let body = document.getElementsByTagName("body").item(0);
 body.addEventListener("keydown", function(event){
     let key = event.key;
@@ -221,82 +232,3 @@ $('a[href^="#"]').click(function() {
   }, speed, 'swing');
   return false;
 });
-
-
-//下書き
-
-// <div id="target" class="bgcolor-dark d-flex flex-column  align-items-center">
-//     <div id="home" class="vh-100 m-5 d-flex flex-column justify-content-center align-items-center ">
-//         <div class="line">
-//             <div class="title-disappear"></div>
-//             <h2 class="text-center text-light font-kaushan title-appear">Memories Of My Journey: <br>Architecture and Landscape</h2>
-//             <div class="line-animation "></div>
-//         </div>
-//         <div class="mt-5">
-//             <div class="link-disappear "></div>
-//             <div class="link-appear ">
-//                 <a href="#VendingMachine" class="text-light bg-secondary font-kaushan">>>Jump to Vending Photo Machine</a>
-//             </div>
-//         </div>
-//     </div>
-//     <div id="VendingMachine" class="m-5 d-flex justify-content-center align-items-center">
-//         <div  class=" border border-lightgrey col-12 col-md-11  d-flex flex-column align-items-center my-5 pt-3">
-//             <h3 class="text-light font-kaushan text-center ">Which photo do you like?</h3>
-
-//             <div class="d-flex flex-wrap justify-content-around p-2">
-
-//                 <div id="slider" class="col-12 col-md-5 d-flex justify-content-center align-items-center mx-2 p-4 p-md-0 ">
-//                     <div class="main img-appear">
-//                         <img src="https://github.com/khkmgch/khkmgch.github.io/blob/main/e540c104573845020da33d51d705950c.jpg?raw=true" class="img-fluid ">
-//                     </div>
-//                     <div class="extra img-disappear">
-//                         <img src="https://www.suntory.co.jp/products/pimg/FEZ5C_R1_20211210.jpg?_x=254&_y=659" class="img-fluid">
-//                     </div>
-//                 </div>
-                
-//                 <div id="display&calculator" class="col-12 col-md-5 mt-4 mt-md-0 mb-3 ">
-//                     <div id="display" class="border border-lightgrey bgcolor-grey d-flex justify-content-center pt-3">
-//                         <div class="col-12">
-//                             <div class="d-flex ">
-//                                 <p class="col-6 font-kaushan text-light">Id: </p>
-//                                 <input type="text" id="photoId" style="background-color: transparent; border:none; " class="col-6 font-kaushan text-light h-50" disabled value="">
-//                             </div>
-//                             <div class="d-flex ">
-//                                 <p class="col-6 font-kaushan text-light">Title: </p>
-//                                 <p class="col-6 font-kaushan text-light">~~</p>
-//                             </div>
-//                             <div class="d-flex ">
-//                                 <p class="col-6 font-kaushan text-light">Place: </p>
-//                                 <p class="col-6 font-kaushan text-light">Paris / France</p>
-//                             </div>
-//                             <div class="d-flex ">
-//                                 <p class="col-6 font-kaushan text-light">Year: </p>
-//                                 <p class="col-6 font-kaushan text-light">2017</p>
-//                             </div>
-//                             <div class="d-flex ">
-//                                 <p class="col-6 font-kaushan text-light">Favorite part: </p>
-//                                 <p class="col-6 font-kaushan text-light">Round Shape</p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div id="calculator" class="col-12 d-flex justify-content-center ps-3 py-3 bgcolor-grey border border-lightgrey mt-3">
-//                         <div class="col-11 d-flex flex-wrap">
-//                             <button type="button" id="key0" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="0">0</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" id="key1" value="1">1</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="2">2</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="3">3</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="4">4</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="5">5</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="6">6</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="7">7</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="8">8</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey" value="9">9</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey">C</button>
-//                             <button type="button" class="btn btn-light border border-darkgrey m-2 btn-width font-kaushan text-darkgrey">E</button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </div>

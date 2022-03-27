@@ -1,4 +1,4 @@
-//飲み物のリスト
+//写真のリスト
 class Photo{
     constructor(photoId, title, place, year, favoritePart, url){
         this.photoId = photoId;

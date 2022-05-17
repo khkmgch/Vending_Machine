@@ -2,8 +2,11 @@
 
 ## Descripsiton
 RecursionのProject2「Vending Machine」で作成したアプリです。
+
 私が旅先で撮影した思い出写真（建物と景観）を見ることができます。
+
 現在は43枚の写真が出てきます。
+
 是非お楽しみください！
 
 ![Vending Machine title](https://user-images.githubusercontent.com/101968115/168042183-ae16f1db-365c-48d2-8434-ffaebae11192.jpg)

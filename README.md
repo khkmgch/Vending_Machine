@@ -7,6 +7,8 @@ RecursionのProject2「Vending Machine」で作成したアプリです。
 
 現在は43枚の写真が出てきます。
 
+写真ごとにお気に入りポイントを書いています。
+
 是非お楽しみください！
 
 ![Vending Machine title](https://user-images.githubusercontent.com/101968115/168042183-ae16f1db-365c-48d2-8434-ffaebae11192.jpg)

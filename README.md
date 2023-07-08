@@ -1,8 +1,6 @@
 # Memories Of My Journey: Architecture and Landscape
 
 ## Descripsiton
-RecursionのProject2「Vending Machine」で作成したアプリです。
-
 私が旅先で撮影した思い出写真（建物と景観）を見ることができます。
 
 現在は43枚の写真が出てきます。

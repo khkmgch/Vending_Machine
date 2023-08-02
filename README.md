@@ -1,6 +1,6 @@
 # Memories Of My Journey: Architecture and Landscape
+自動販売機です。
 
-## Descripsiton
 私が旅先で撮影した思い出写真（建物と景観）を見ることができます。
 
 現在は43枚の写真が出てきます。
@@ -17,7 +17,7 @@
 ## Url
 https://khkmgch.github.io/Vending_Machine/
 
-## Usage
+## 使い方
 自動販売機に入力された番号に対応する写真が表示されます。
 
 現在、見られる写真の番号は0から42までです。
